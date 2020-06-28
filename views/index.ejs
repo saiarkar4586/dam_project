@@ -1,0 +1,187 @@
+<%- include('includes/head.ejs')%>
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid" style="margin-top: -10px;">
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-5 col-lg-6">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Line Chart</h6>
+                  
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                     <canvas id="canvas"></canvas>
+                  </div>
+                  <div class="button mt-2">
+                    <button type="button" class="btn btn-yellow">9:00 AM</button>
+                    <button type="button" class="btn btn-info">12:00 PM</button>
+                    <button type="button" class="btn btn-danger">3:00 PM</button>
+                    <!-- <a href="/sentsms">
+                      <button type="submit" class="btn btn-success">Send SMS</button>
+                    </a> -->
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-7 col-lg-6">
+              <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">တစ်ပတ်စာ အချက်အလတ်များ</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Mon</th>
+                      <th>Tue</th>
+                      <th>Wed</th>
+                      <th>Thu</th>
+                      <th>Fri</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <% let monOnedata %>
+                      <% if(monOnedata = datas.find(data => data.days === 'Monday' && data.mark=== 'one')){ %>
+                          <td class="title">09:00 AM</td>
+                      <% } %>
+
+                      <!-- <% if(mondata = datas.find(data => data.days === 'Monday')){ %> -->
+                          <td><%= monOnedata.water_level %></td>
+                          <input type="hidden" value="<%= monOnedata.water_level %>" id="monOnedata">
+
+                      <!-- <% } %> -->
+
+                      <% let tueOnedata %>
+                      <% if(tueOnedata = datas.find(data => data.days === 'Tuesday' && data.mark=== 'one')){ %>
+                          <td><%= tueOnedata.water_level %></td>
+                          <input type="hidden" value="<%= tueOnedata.water_level %>" id="tueOnedata">
+
+                      <% } %>
+
+                      <% let wedOnedata %>
+                      <% if(wedOnedata = datas.find(data => data.days === 'Wednesday' && data.mark=== 'one')){ %>
+                          <td><%= wedOnedata.water_level %></td>
+                          <input type="hidden" value="<%= wedOnedata.water_level %>" id="wedOnedata">
+
+                      <% } %>
+
+                      <% let thuOnedata %>
+                      <% if(thuOnedata = datas.find(data => data.days === 'Thursday' && data.mark=== 'one')){ %>
+                          <td><%= thuOnedata.water_level %></td>
+                          <input type="hidden" value="<%= thuOnedata.water_level %>" id="thuOnedata">
+
+                      <% } %>
+
+                      <% let friOnedata %>
+                      <% if(friOnedata = datas.find(data => data.days === 'Friday' && data.mark=== 'one')){ %>
+                          <td><%= friOnedata.water_level %></td>
+                          <input type="hidden" value="<%= friOnedata.water_level %>" id="friOnedata">
+
+                      <% } %>   
+                    </tr>
+
+                    <tr>
+                      <% let monTwodata %>
+                      <% if(monTwodata = datas.find(data => data.days === 'Monday' && data.mark=== 'two')){ %>
+                          <td class="title">12:00 PM</td>
+                      <% } %>
+
+                          <td><%= monTwodata.water_level %></td>
+                          <input type="hidden" value="<%= monTwodata.water_level %>" id="monTwodata">
+
+                      <% let tueTwodata %>
+                      <% if(tueTwodata = datas.find(data => data.days === 'Tuesday' && data.mark=== 'two')){ %>
+                          <td><%= tueTwodata.water_level %></td>
+                          <input type="hidden" value="<%= tueTwodata.water_level %>" id="tueTwodata">
+                      <% } %>
+
+                      <% let wedTwodata %>
+                      <% if(wedTwodata = datas.find(data => data.days === 'Wednesday' && data.mark=== 'two')){ %>
+                          <td><%= wedTwodata.water_level %></td>
+                          <input type="hidden" value="<%= wedTwodata.water_level %>" id="wedTwodata">
+                      <% } %>
+
+                      <% let thuTwodata %>
+                      <% if(thuTwodata = datas.find(data => data.days === 'Thursday' && data.mark=== 'two')){ %>
+                          <td><%= thuTwodata.water_level %></td>
+                          <input type="hidden" value="<%= thuTwodata.water_level %>" id="thuTwodata">
+                      <% } %>
+
+                      <% let friTwodata %>
+                      <% if(friTwodata = datas.find(data => data.days === 'Friday' && data.mark=== 'two')){ %>
+                          <td><%= friTwodata.water_level %></td>
+                          <input type="hidden" value="<%= friTwodata.water_level %>" id="friTwodata">
+                      <% } %>
+                    </tr>
+
+                    <tr>
+                      <% let monThreedata %>
+                      <% if(monThreedata = datas.find(data => data.days === 'Monday' && data.mark=== 'three')){ %>
+                          <td class="title">03:00 PM</td>
+                      <% } %>
+
+                          <td><%= monThreedata.water_level %></td>
+                          <input type="hidden" value="<%= monThreedata.water_level %>" id="monThreedata">
+
+                      <% let tueThreedata %>
+                      <% if(tueThreedata = datas.find(data => data.days === 'Tuesday' && data.mark=== 'three')){ %>
+                          <td><%= tueThreedata.water_level %></td>
+                          <input type="hidden" value="<%= tueThreedata.water_level %>" id="tueThreedata">
+                      <% } %>
+
+                      <% let wedThreedata %>
+                      <% if(wedThreedata = datas.find(data => data.days === 'Wednesday' && data.mark=== 'three')){ %>
+                          <td><%= wedThreedata.water_level %></td>
+                          <input type="hidden" value="<%= wedThreedata.water_level %>" id="wedThreedata">
+                      <% } %>
+
+                      <% let thuThreedata %>
+                      <% if(thuThreedata = datas.find(data => data.days === 'Thursday' && data.mark=== 'three')){ %>
+                          <td><%= thuThreedata.water_level %></td>
+                          <input type="hidden" value="<%= thuThreedata.water_level %>" id="thuThreedata">
+                      <% } %>
+
+                      <% let friThreedata %>
+                      <% if(friThreedata = datas.find(data => data.days === 'Friday' && data.mark=== 'three')){ %>
+                          <td><%= friThreedata.water_level %></td>
+                          <input type="hidden" value="<%= friThreedata.water_level %>" id="friThreedata">
+                      <% } %>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+            </div>
+          </div>
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+<%- include('includes/end.ejs')%>
+
+

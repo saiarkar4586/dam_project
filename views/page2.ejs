@@ -1,0 +1,56 @@
+<%- include('includes/head.ejs')%>
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid" style="margin-top: -10px;">
+
+          <!-- DataTales -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Dam Datas</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Date</th>
+                      <th>Days</th>
+                      <th>Time</th>
+                      <th>Water Level</th>
+                      <th>Water Gate</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                    <% let i=1 %>
+                    <% for(let data of datas) {%>
+                      <tr>
+                        <td><%= i %></td>
+                        <td><%= data.today %></td>
+                        <td><%= data.days %></td>
+                        <td><%= data.time %></td>
+                        <td><%= data.water_level %></td>
+                        <td><%= data.water_gate %></td>
+                      </tr>
+                      <% i++ %>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <%- include('includes/end.ejs')%>
